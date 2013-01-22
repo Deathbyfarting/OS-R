@@ -1,0 +1,29 @@
+--network
+net = rednet
+net.open("top")
+net.open("bottom")
+net.open("left")
+net.open("back")
+net.open("right")
+
+local checkup = http.get(update)
+var = string.gmatch(checkup.readAll(), "version - 1.00.00")
+if var ~= nil then print("no update needed") end
+
+term.setBackgroundColor(colors.blue)
+term.clear()
+
+term.setCursorPos(22,8)
+print("OS-R")
+term.setCursorPos(18,9)
+print("version 0.50.4")
+sleep(5)
+
+
+function getFile(URL,path)
+        fs.makeDir(path)
+        local content = http.get(url)
+        local file = fs.open(path,"w")
+        file.write(content.readAll())
+        file.close()
+end
