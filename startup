@@ -11,8 +11,9 @@ function getFile(url,path)
         local content = http.get(url)
         local file = fs.open(path,"w")
 write = textutils.serialize(content.readAll())
-print(write)
-        file.write(write)
+a = string.gsub(write, '\\', " " )
+print(a)
+        file.write(a)
         file.close()
 end
 
