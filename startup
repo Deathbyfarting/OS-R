@@ -6,6 +6,7 @@ net.open("left")
 net.open("back")
 net.open("right")
 URLS = {"https://raw.github.com/Deathbyfarting/OS-R/master/startup"}
+Path = {"/startup"}
 
 function getFile(url,path)
         local content = http.get(url)
@@ -21,11 +22,13 @@ version = "version 1.00.00"
 update = "https://raw.github.com/Deathbyfarting/OS-R/master/README.md"
 
 local checkup = http.get(update)
+fs.makeDir("/bios")
 content = textutils.serialize(checkup.readAll())
  text = string.match(content, version)
 if text == version then 
 print("no update needed") 
 else 
 print("update Needed") 
-getFile(URLS[1],"/thisIsATest")
+for i = 1, # URLS do
+getFile(URLS[i],Path[i]) end
 end
