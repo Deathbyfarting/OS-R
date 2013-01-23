@@ -8,7 +8,6 @@ net.open("right")
 URLS = {"https://raw.github.com/Deathbyfarting/OS-R/master/startup"}
 Path = {"/startup"}
 
-version = "version 1.00.00"
 update = "https://raw.github.com/Deathbyfarting/OS-R/master/README.md"
 
 function getFile(url,path)
@@ -25,24 +24,32 @@ end
 if not fs.exists("/bios/version") then  --makes the check agaist file if needed
 fs.makeDir("/bios")
 local file = fs.open("/bios/version","w")
-file.write("version 1.00.00")
+file.write("version 0.00.00")
 file.close()
 print("created version file")
 end            --end if exists
 
 --get version
 file = fs.open("/bios/version","r")
-version = file.readLine()
+local version = file.readLine()
+print(version)
 file.close()
 
 local checkup = http.get(update)
 fs.makeDir("/bios")
-content = textutils.serialize(checkup.readAll())
- text = string.match(content, version)
+local content = textutils.serialize(checkup.readAll())
+local text = string.match(content, version) 
 if text == version then 
-print("no update needed") 
-else 
+print("no update needed")
+else
 print("update Needed") 
 for i = 1, # URLS do
 getFile(URLS[i],Path[i]) end
+
+local file = fs.open("/bios/version","w")
+versionfin = string.gsub(content, '\\', " " )
+file.write(versionfin)
+file.close()
+print("content dumped into file")
+
 end
