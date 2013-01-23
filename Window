@@ -1,0 +1,3 @@
+
+X,Y = term.getSize()
+
