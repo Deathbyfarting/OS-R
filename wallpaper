@@ -1,1 +1,29 @@
-testing
+sizeX,sizeY =term.getSize()
+
+wallpaper = function()
+term.setBackgroundColor(colors.orange)
+term.clear()
+end
+
+icon = function(x,y,string,color)
+for i = 0, 2 do
+paintutils.drawLine(x,y+i,x+3,y+i,color)
+end
+term.setCursorPos(x-2,y+3)
+term.setTextColor(colors.black)
+print(string)
+term.setTextColor(colors.white)
+end
+
+desktop = function()
+paintutils.drawLine(1,1,sizeX,1,colors.gray)
+term.setCursorPos(1,1)
+term.setTextColor(colors.white)
+print("Menu")
+
+if clearanceLevel == 4 then
+icon(3,4,"terminal",colors.white)
+end
+icon(3,8,"Msg",colors.white)
+
+end
