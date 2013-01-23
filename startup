@@ -5,25 +5,26 @@ net.open("bottom")
 net.open("left")
 net.open("back")
 net.open("right")
+URLS = {"https://raw.github.com/Deathbyfarting/OS-R/master/startup"}
 
-local checkup = http.get(update)
-var = string.gmatch(checkup.readAll(), "version - 1.00.00")
-if var ~= nil then print("no update needed") end
-
-term.setBackgroundColor(colors.blue)
-term.clear()
-
-term.setCursorPos(22,8)
-print("OS-R")
-term.setCursorPos(18,9)
-print("version 0.50.4")
-sleep(5)
-
-
-function getFile(URL,path)
-        fs.makeDir(path)
+function getFile(url,path)
         local content = http.get(url)
         local file = fs.open(path,"w")
-        file.write(content.readAll())
+write = textutils.serialize(content.readAll())
+print(write)
+        file.write(write)
         file.close()
+end
+
+version = "version 1.00.00"
+update = "https://raw.github.com/Deathbyfarting/OS-R/master/README.md"
+
+local checkup = http.get(update)
+content = textutils.serialize(checkup.readAll())
+ text = string.match(content, version)
+if text == version then 
+print("no update needed") 
+else 
+print("update Needed") 
+getFile(URLS[1],"/thisIsATest")
 end
