@@ -24,6 +24,7 @@ print("Menu")
 if clearanceLevel == 4 then
 icon(3,4,"terminal",colors.white)
 end
-icon(3,8,"Msg",colors.white)
+icon(3,8,"My Computer",colors.white)
+icon(3,12,"Server",colors.white)
 
 end
