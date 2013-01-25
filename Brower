@@ -1,3 +1,14 @@
+net = rednet
+net.open("right")
+net.open("left")
+net.open("back")
+net.open("top")
+net.open("bottom")
+msg = "//http.2.4.7.57.23"
+
+if string.match(msg,"//http") == "//http" then
+info = string.gmatch(msg, ".%d%d")
 
 
+end
 
