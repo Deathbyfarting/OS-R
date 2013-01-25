@@ -1,14 +1,27 @@
+replace = {"/gitHub","/user","/pass"}
+with    = {".0",".1",".2"}
+
+if not fs.exists("/History") then  --makes the check agaist file if needed
+local file = fs.open("/History","w")
+file.write("You Smell")
+file.close()
+end            --end if exists
 net = rednet
 net.open("right")
 net.open("left")
 net.open("back")
 net.open("top")
 net.open("bottom")
-msg = "//http.2.4.7.57.23"
+msg = "//http.200.000.222.444"
+print(msg)
 
 if string.match(msg,"//http") == "//http" then
-info = string.gmatch(msg, ".%d%d")
+for i = 1, # replace do msg=string.gsub(msg, replace[i],with[i]) end
 
+local sendID = string.match(msg, ".%d%d%d")
+local msgOut =string.gsub(msg,sendID,"")
+for i=1, 2 do sendID =string.gsub(sendID,"0"," ") end
+sendID = tonumber(sendID)
+sendID = sendID * 100
 
 end
-
