@@ -1,5 +1,4 @@
-
-
+--shell.run("/OS")
 window = function(startX,startY,sizeX,sizeY,color,title)
 if title == nil then title = "new Window" end
 
@@ -13,4 +12,9 @@ paintutils.drawPixel(startX+i,startY,colors.gray)
 end
 term.setCursorPos(startX+4,startY)
 print(title)
+while true do
+local event, button,mouseX,mouseY = os.pullEvent("mouse_click")
+if mouseX == startX and mouseY == startY then 
+break
+end
 end
