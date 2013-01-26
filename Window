@@ -1,3 +1,16 @@
 
-X,Y = term.getSize()
 
+window = function(startX,startY,sizeX,sizeY,color,title)
+if title == nil then title = "new Window" end
+
+
+for i = 0, sizeX-1 do for j = 0, sizeY-1 do
+paintutils.drawPixel(startX+i,startY+j,color)
+end end
+
+for i = 0, sizeX-1 do
+paintutils.drawPixel(startX+i,startY,colors.gray)
+end
+term.setCursorPos(startX+4,startY)
+print(title)
+end
